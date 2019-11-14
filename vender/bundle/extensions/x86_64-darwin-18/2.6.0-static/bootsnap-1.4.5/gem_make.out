@@ -1,0 +1,15 @@
+current directory: /Users/minamidatetakuya/Desktop/railsApp/FamimaApp/vender/bundle/gems/bootsnap-1.4.5/ext/bootsnap
+/Users/minamidatetakuya/.rbenv/versions/2.6.5/bin/ruby -I /Users/minamidatetakuya/.rbenv/versions/2.6.5/lib/ruby/2.6.0 -r ./siteconf20191110-56648-5fkhjj.rb extconf.rb
+creating Makefile
+
+current directory: /Users/minamidatetakuya/Desktop/railsApp/FamimaApp/vender/bundle/gems/bootsnap-1.4.5/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/minamidatetakuya/Desktop/railsApp/FamimaApp/vender/bundle/gems/bootsnap-1.4.5/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/minamidatetakuya/Desktop/railsApp/FamimaApp/vender/bundle/gems/bootsnap-1.4.5/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20191110-56648-qcg13u/bootsnap

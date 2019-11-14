@@ -1,0 +1,36 @@
+<h1>Itemcreates#edit</h1>
+<p><%= @msg %></p>
+<% if @itemcreate.errors.any? %>
+<ul>
+    <%= @itemcreate.errors.full_messages.each do |err| %>
+        <li><%= err %></li>
+    <% end %>
+</ul>
+<% end %>
+
+<h3>作成ID:<%= @itemcreate.id %></h3>
+
+<%= form_for(@itemcreate, url:{controller:'itemcreates', action:'edit'}) do |form| %>
+<table>
+        <tr><th>商品ID</th>
+            <td><%= form.number_field :iteminfo_id %></td></tr>
+        <tr><th>作成個数</th>
+            <td><%= form.number_field :createcount %></td></tr>
+        <tr><th>販売個数</th>
+            <td><%= form.number_field :buycount %></td></tr>
+        <tr><th></th>
+            <td><%= form.submit "送信" %></td></tr>
+</table>
+<% end %>
+<hr>
+
+<h3>商品IDと商品名の組み合わせです</h3>
+<table>
+    <tr><th>商品ID</th><th>商品名</th></tr>
+    <% @iteminfos.each do |info| %>
+    <tr>
+        <td><%= info.id %></td>
+        <td><%= info.name %></td>
+    </tr>
+    <% end %>
+</table>

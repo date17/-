@@ -1,0 +1,2 @@
+module InfocreatesHelper
+end

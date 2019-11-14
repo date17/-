@@ -1,0 +1,42 @@
+<h1>Itemcreates#index</h1>
+<p><%= @msg %></p>
+
+
+<table>
+    <tr><th>作成ID</th><th>商品名</th><th>作成時間</th><th>残り販売可能時間</th><th>作成個数</th><th>販売個数</th><th>廃棄時間</th><th colspan="3"></th><th>商品状態</th></tr>
+    <% @itemcreates.each do |obj| %>
+    <tr>
+        <td><%= obj.id %></td>
+        <td><%= obj.iteminfo.name %></td>
+        <td><%= obj.created_at.strftime("%-m月%-d日 %-H時%-M分") %></td>
+        <td><%= Famimain.new.timecal(obj.iteminfo.itemtime, obj.created_at) %></td>
+        <td><%= obj.createcount %></td>
+        <td><%= obj.buycount %>個</td>
+        <td><%= Famimain.new.timediscard(obj.iteminfo.itemtime, obj.created_at) %></td>
+        <td><a href="/itemcreates/edit/<%= obj.id %>">更新</a></td>
+        <td><a href="javascript:delData(<%= obj.id %>);">削除</a></td>
+        <td><a href="/discards/add/<%= obj.id %>">廃棄登録</a></td>
+        <% if Famimain.new.timecalnos(obj.iteminfo.itemtime, obj.created_at) > 0 %>
+            <td>販売可能</td>
+        <% elsif Discard.where(itemcreate_id: obj.id).exists? %>
+            <td class="item-status">廃棄済</td>
+        <% elsif Famimain.new.timecalnos(obj.iteminfo.itemtime, obj.created_at) <= 0 %>
+            <td>即廃棄</td>
+        <% else %>
+            <td></td>
+        <% end %>
+
+    </tr>
+    <% end %>
+</table>
+
+<p><a href="/itemcreates/add">＞＞新規作成</a></p>
+
+<script>
+function delData(num) {
+    if (confirm('このデータを削除しますか？')){
+        document.location = "/itemcreates/delete/" + num;
+    }
+    return false;
+}
+</script>

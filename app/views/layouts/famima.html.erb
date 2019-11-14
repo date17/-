@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>廃棄管理webアプリケーション</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag 'famimaApp', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+    <header>
+        <ul id="nav">
+            <li><a href="/famimain">ホーム</a></li>
+            <li><a href="/iteminfos">商品情報</a></li>
+            <li><a href="/itemcreates">商品作成情報</a></li>
+            <li><a href="/discards">廃棄情報</a></li>
+            <li><a href="/genres">ジャンル情報</a></li>
+        </ul>
+
+    </header>
+
+        <%= yield %>
+    
+    <footer>
+        <p><a href="https://github.com/date17">my github account page</a></p>
+    </footer>
+</body>
+</html>

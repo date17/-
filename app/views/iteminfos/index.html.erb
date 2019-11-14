@@ -1,0 +1,35 @@
+<h1>商品情報</h1>
+<p><%= @msg %></p>
+
+<ul id = "nav">
+<% @genres.each do |genre|%>
+    <li><a href="/iteminfos/genre/<%= genre.id %>"><%= genre.name %></a></li>
+<% end %>
+</ul>
+
+<table>
+    <tr><th>商品ID</th><th>商品名</th><th>商品画像</th><th>販売可能時間</th><th>ジャンル名</th><th colspan="2"></th></tr>
+    <% @iteminfos.each do |obj| %>
+    <tr>
+        <td><%= obj.id %></td>
+        <td><%= obj.name %></td>
+        <td>画像なし（仮）</td>
+        <td><%= obj.itemtime %>時間</td>
+        <td><%= obj.genre.name %></td>
+        <td><a href="/iteminfos/edit/<%= obj.id %>">更新</a></td>
+        <td><a href="javascript:delData(<%= obj.id %>);">削除</a></td>
+    </tr>
+    <% end %>
+</table>
+
+<p><a href="/iteminfos/add">＞＞新規作成</a></p>
+
+
+<script>
+function delData(num) {
+    if (confirm('このデータを削除しますか？')){
+        document.location = "/iteminfos/delete/"+num;
+    }
+    return false;
+}
+</script>

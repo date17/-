@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  itemcreate_id: 1
+  discardcount: 1
+  memo: MyText
+
+two:
+  itemcreate_id: 1
+  discardcount: 1
+  memo: MyText

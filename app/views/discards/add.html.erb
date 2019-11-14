@@ -1,0 +1,36 @@
+<h1>Discards#add</h1>
+<p><%= @msg %></p>
+
+<% if @discard.errors.any? %>
+<ul>
+    <%= @discard.errors.full_messages.each do |err| %>
+        <li><%= err %></li>
+    <% end %>
+</ul>
+<% end %>
+<%= @itemcreate.id %>
+<%= form_for(@discard, url:{controller:'discards', action:'add'}) do |form| %>
+<table>
+    <tr><th>作成ID</th><td><%= @itemcreate.id %><%= form.hidden_field :itemcreate_id , value:@itemcreate.id %></td></tr>
+    <tr><th>商品名</th><td><%= @itemcreate.iteminfo.name %></td></tr>
+    <tr><th>個数</th>
+        <td><%= form.number_field :discardcount, value:@itemcreate.buycount %></td></tr>
+    <tr><th>メモ</th>
+        <td><%= form.text_area :memo, {cols:40, rows:10} %></td></tr>
+    <tr><th></th>
+        <td><%= form.submit "送信" %></td></tr>
+</table>
+<% end %>
+
+<hr>
+<table>
+<tr><th>作成ID</th><th>商品名</th><th>作成時間</th><th>残り販売可能時間</th><th>販売個数</th><th>廃棄時間</th></tr>
+<tr>
+    <td><%= @itemcreate.id %></td>
+    <td><%= @itemcreate.iteminfo.name %></td>
+    <td><%= @itemcreate.created_at.strftime("%-m月%-d日 %-H時%-M分") %></td>
+    <td><%= Famimain.new.timecal(@itemcreate.iteminfo.itemtime, @itemcreate.created_at) %></td>
+    <td><%= @itemcreate.buycount %></td>
+    <td><%= Famimain.new.timediscard(@itemcreate.iteminfo.itemtime, @itemcreate.created_at) %></td>
+</tr>
+</table>

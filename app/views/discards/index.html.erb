@@ -1,0 +1,25 @@
+<h1>Discards#index</h1>
+<p><%= @msg %></p>
+
+<table>
+    <tr><th>廃棄ID</th><th>商品名</th><th>個数</th><th> 廃棄登録時間</th><th>メモ</th><th></th></tr>
+    <% @discards.each do |obj| %>
+        <tr>
+            <td><%= obj.id %></td>
+            <td><%= Discard.new.getinfoname(obj.itemcreate_id).iteminfo.name %></td>
+            <td><%= obj.discardcount%></td>
+            <td><%= obj.created_at.strftime("%-m月%-d日 %-H時%-M分") %></td>
+            <td><%= obj.memo %></td>
+            <td><a href="javascript:delData(<%= obj.id %>);">削除</a></td>
+        </tr>
+    <% end %>
+</table>
+
+<script>
+function delData(num) {
+    if(confirm('このデータを削除しますか?')){
+        document.location = "/discards/delete/" + num;
+    }
+    return false;
+}
+</script>
