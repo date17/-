@@ -16,23 +16,21 @@
 
 <table class="table table-bordered">
     <thead>
-    <tr><th>商品ID</th><th>商品名</th><th>商品画像</th><th>販売可能時間</th><th>ジャンル名</th><th colspan="2"></th></tr>
+    <tr><th>商品ID</th><th>商品名</th><th>商品画像</th><th>販売可能時間</th><th>ジャンル名</th><th></th></tr>
     </thead>
     <% @iteminfos.each do |obj| %>
     <tr>
         <td><%= obj.id %></td>
         <td><%= obj.name %></td>
-        <td><%= obj.path %></td>
+        <td><%= image_tag('/images/'+ obj.path, alt:"画像未登録", size:'40x40') %></td>
         <td><%= obj.itemtime %>時間</td>
         <td><%= obj.genre.name %></td>
         <td><a href="/iteminfos/edit/<%= obj.id %>">更新</a></td>
     </tr>
-    <%= obj.path %>
     <% end %>
 </table>
 
 <p><a href="/iteminfos/add">＞＞新規作成</a></p>
-
 
 <script>
 function delData(num) {

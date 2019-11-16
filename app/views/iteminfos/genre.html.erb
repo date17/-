@@ -14,16 +14,15 @@
 <hr>
 
 <table class="table table-bordered">
-    <thead><tr><th>商品ID</th><th>商品名</th><th>商品画像</th><th>販売可能時間</th><th>ジャンル名</th><th colspan="2"></th></tr></thead>
+    <thead><tr><th>商品ID</th><th>商品名</th><th>商品画像</th><th>販売可能時間</th><th>ジャンル名</th><th></th></tr></thead>
     <% @datas.each do |obj| %>
     <tr>
         <td><%= obj.id %></td>
         <td><%= obj.name %></td>
-        <td><%= image_tag obj.path, alt:"画像未登録", size:"50x50" %></td>
+        <td></td>
         <td><%= obj.itemtime %>時間</td>
         <td><%= obj.genre_id %></td>
         <td><a href="/iteminfos/edit/<%= obj.id %>">更新</a></td>
-        <td><a href="javascript:delData(<%= obj.id %>);">削除</a></td>
     </tr>
     <% end %>
 </table>
