@@ -1,3 +1,25 @@
-// Place all the styles related to the genres controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+    .body-title {
+        font-size: 25pt;
+        font-weight: bold;
+        color: #333;
+    }
+    table {
+        thead {
+            text-align: center;
+        }
+        td {
+            text-align: center;
+        }
+    }
+    .add-form {
+        width: 30%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .edit-form {
+        width: 30%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}

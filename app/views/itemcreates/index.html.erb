@@ -1,9 +1,11 @@
-<h1>Itemcreates#index</h1>
-<p><%= @msg %></p>
+<div class="body-title">商品作成一覧</div>
+<hr>
 
 
-<table>
+<table class="table table-bordered">
+    <thead>
     <tr><th>作成ID</th><th>商品名</th><th>作成時間</th><th>残り販売可能時間</th><th>作成個数</th><th>販売個数</th><th>廃棄時間</th><th colspan="3"></th><th>商品状態</th></tr>
+    </thead>
     <% @itemcreates.each do |obj| %>
     <tr>
         <td><%= obj.id %></td>
@@ -15,7 +17,6 @@
         <td><%= Famimain.new.timediscard(obj.iteminfo.itemtime, obj.created_at) %></td>
         <td><a href="/itemcreates/edit/<%= obj.id %>">更新</a></td>
         <td><a href="javascript:delData(<%= obj.id %>);">削除</a></td>
-        <td><a href="/discards/add/<%= obj.id %>">廃棄登録</a></td>
         <% if Famimain.new.timecalnos(obj.iteminfo.itemtime, obj.created_at) > 0 %>
             <td>販売可能</td>
         <% elsif Discard.where(itemcreate_id: obj.id).exists? %>
@@ -25,7 +26,7 @@
         <% else %>
             <td></td>
         <% end %>
-
+        <td><a href="/discards/add/<%= obj.id %>">廃棄登録</a></td>
     </tr>
     <% end %>
 </table>

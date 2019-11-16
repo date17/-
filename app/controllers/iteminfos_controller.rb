@@ -1,5 +1,5 @@
 class IteminfosController < ApplicationController
-  layout 'famima'
+layout 'iteminfo'
   before_action :set_iteminfo, only: [:show, :edit]
 
   #全表示

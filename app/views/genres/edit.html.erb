@@ -1,5 +1,5 @@
-<h1>Genres#edit</h1>
-<p><%= @msg %></p>
+<div class="body-title">ジャンルの更新フォーム</div>
+<hr>
 
 <% if @genre.errors.any? %>
 <ul>
@@ -7,13 +7,14 @@
         <li><%= err %></li>
     <% end %>
 </ul>
+<hr>
 <% end %>
-
-<%= form_for(@genre, url:{controller:'genres', action:'edit'}) do |form| %>
-<table>
-    <tr><th>ジャンル名</th>
-        <td><%= form.text_field :name %></td></tr>
-    <tr><th></th>
-        <td><%= form.submit "送信" %></td></tr>
-</table>
-<% end %>
+<div class="edit-form">
+    <%= form_for(@genre, url:{controller:'genres', action:'edit'}) do |form| %>
+    <table class="table table-bordered">
+        <thead class="thead-dark"><tr><th>ジャンル名</th></thead>
+            <td><%= form.text_field :name %></td></tr>
+            <td><%= form.submit "更新" %></td></tr>
+    </table>
+    <% end %>
+</div>

@@ -1,37 +1,42 @@
-<h1>商品情報</h1>
-<p><%= @msg %></p>
-
+<div class="body-title">商品情報変更フォーム</div>
+<hr>
 <% if @iteminfo.errors.any? %>
 <ul>
     <%= @iteminfo.errors.full_messages.each do |err| %>
         <li><%= err %></li>
     <% end %>
 </ul>
-<% end %>
-
-<%= form_for(@iteminfo, url:{controller:'iteminfos', action: 'edit'}) do |form| %>
-<table>
-    <tr><th>商品名</th>
-        <td><%= form.text_field :name %></td></tr>
-    <tr><th>画像パス(※商品名と同じ)</th>
-        <td><%= form.text_field :path %></td></tr>
-    <tr><th>販売可能時間</th>
-        <td><%= form.number_field :itemtime %></td></tr>
-    <tr><th>ジャンルID</th>
-        <td><%= form.number_field :genre_id%></td></tr>
-    <tr><th></th>
-        <td><%= form.submit "送信" %></td></tr>
-</table>
-<% end %>
-
 <hr>
-<h3>ジャンルIDとジャンル名です</h3>
-<table>
-    <tr><th>ジャンルID</th><th>ジャンル名</th></tr>
-    <% @genre.each do |gen| %>
-    <tr>
-        <td><%= gen.id %></td><td><%= gen.name %></td>
-    </tr>
-    <% end %>
-</table>
+<% end %>
+<div class="main">
+    <div class="inline-block">
+        <div class="add-form">
+            <%= form_for(@iteminfo, url:{controller:'iteminfos', action: 'edit'}) do |form| %>
+            <table class="table table-bordered">
+                <tr><thead><th>商品名</th></thead>
+                    <td><%= form.text_field :name %></td></tr>
+                <tr><thead><th>画像パス(※商品名と同じ)</th></thead>
+                    <td><%= form.text_field :path %></td></tr>
+                <tr><thead><th>販売可能時間</th></thead>
+                    <td><%= form.number_field :itemtime, min:0 %></td></tr>
+                <tr><thead><th>ジャンルID</th></thead>
+                    <td><%= form.number_field :genre_id, min:0%></td></tr>
+                    <td><%= form.submit "更新" %></td></tr>
+            </table>
+            <% end %>
+        </div>
+    </div>
+    <div class="inline-block">
+        <div class="genre-table">
+            <table class="table table-bordered">
+                <tr><thead><th>ジャンルID</th><th>ジャンル名</th></thead></tr>
+                <% @genre.each do |gen| %>
+                <tr>
+                    <td><%= gen.id %></td><td><%= gen.name %></td>
+                </tr>
+                <% end %>
+            </table>
+        </div>
+    </div>
+</div>
 

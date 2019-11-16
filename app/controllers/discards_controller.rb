@@ -1,5 +1,5 @@
 class DiscardsController < ApplicationController
-  layout 'famima'
+  layout 'discard'
   before_action :set_action, only: [:edit, :delete]
 
   def index
@@ -9,8 +9,6 @@ class DiscardsController < ApplicationController
   def add
     @discard = Discard.new
     @itemcreate = Itemcreate.find(params[:id])
-
-    
 
     if request.post?
       @itemcreate = Itemcreate.find(params[:discard][:itemcreate_id])
@@ -54,14 +52,15 @@ class DiscardsController < ApplicationController
   #   end
   # end
 
-  # def delete
-  #   # 販売個数を作成個数に合わせる
-  #   @itemcreate = Itemcreate.find(@discard.itemcreate_id)
-  #   @itemcreate.update(buycount: @itemcreate.createcount)
-  #   @discard.destroy
-  #   @msg = 'sucsess delete data'
-  #   redirect_to '/discards/index'
-  # end
+  def delete
+    # 販売個数を作成個数に合わせる
+    @itemcreate = Itemcreate.find(@discard.itemcreate_id)
+    buycount = @itemcreate.buycount + @discard.discardcount
+    @itemcreate.update(buycount: buycount)
+    @discard.destroy
+    @msg = 'sucsess delete data'
+    redirect_to '/discards/index'
+  end
 
   private
   def discard_params

@@ -6,6 +6,7 @@
 
     <%= stylesheet_link_tag 'famimaApp', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application'%>
 </head>
 
 <body>
@@ -17,11 +18,15 @@
             <li><a href="/discards">廃棄情報</a></li>
             <li><a href="/genres">ジャンル情報</a></li>
         </ul>
-
+    <hr>
+    <hr>
     </header>
 
+    <div class="container">
         <%= yield %>
-    
+    </div>
+    <hr>
+    <hr>
     <footer>
         <p><a href="https://github.com/date17">my github account page</a></p>
     </footer>

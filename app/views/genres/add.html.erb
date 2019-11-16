@@ -1,5 +1,5 @@
-<h1>Genres#add</h1>
-<p><%= @msg %></p>
+<div class="body-title">ジャンルの追加フォーム</div>
+<hr>
 
 <% if @genre.errors.any? %>
 <ul>
@@ -7,13 +7,15 @@
         <li><%= err %></li>
     <% end %>
 </ul>
+<hr>
 <% end %>
 
+<div class="add-form">
 <%= form_for(@genre, url:{controller:'genres', action:'add'}) do |form| %>
-<table>
-    <tr><th>ジャンル名</th>
+<table class="table table-bordered">
+    <thead class="thead-dark"><tr><th>ジャンル名</th></thead>
         <td><%= form.text_field :name %></td></tr>
-    <tr><th></th>
-        <td><%= form.submit "送信" %></td></tr>
+        <td><%= form.submit "追加" %></td></tr>
 </table>
 <% end %>
+</div>

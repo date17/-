@@ -1,16 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FamimaApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application'%>
+   <title>FamiManage</title>
+
+    <%= stylesheet_link_tag 'famimaApp', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application'%>
   </head>
 
   <body>
-    <%= yield %>
-  </body>
+    <header>
+      <div class="header-title">
+        <h3>FamiManage</h3>
+      </div>
+      <div class="col-12 clearfix">
+        <div class="inline-block"><a href="/famimain">ホーム</a></div>
+        <div class="inline-block"><a href="/iteminfos">商品情報</a></div>
+        <div class="inline-block"><a href="/itemcreates">商品作成情報</a></div>
+        <div class="inline-block"><a href="/discards">廃棄情報</a></div>
+        <div class="inline-block"><a href="/genres">ジャンル情報</a></div>
+      </div>
+        <hr>
+        <hr>
+    </header>
+
+    <div class="container">
+        <%= yield %>
+    </div>
+    
+    <footer class="container">
+    <hr>
+    <hr>
+      <div class="footer-image">
+        <%= image_tag 'GitHub-Mark-64px.png', alt:'GitHub'%>
+      </div>
+      <a href="https://github.com/date17" target="_blank">My Github account please check!</a>
+    </footer>
+</body>
 </html>

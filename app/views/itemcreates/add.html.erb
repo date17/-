@@ -1,5 +1,5 @@
-<h1>商品作成情報</h1>
-<p><%= @msg %></p>
+<div class="body-title">商品作成フォーム</div>
+<hr>
 
 <% if @itemcreate.errors.any? %>
 <ul>
@@ -7,28 +7,99 @@
         <li><%= err %></li>
     <% end %>
 </ul>
+<hr>
 <% end %>
 
-
-<%= form_for(@itemcreate, url:{controller:'itemcreates', action:'add'}) do |form| %>
-<table>
-    <tr><th>商品ID</th>
-        <td><%= form.number_field :iteminfo_id %></td></tr>
-    <tr><th>作成個数</th>
-        <td><%= form.number_field :createcount %></td></tr>
-    <tr><th></th>
-        <td><%= form.submit "送信"%></td></tr>
-</table>
-<% end %>
+<div class="add-form">
+    <%= form_for(@itemcreate, url:{controller:'itemcreates', action:'add'}) do |form| %>
+    <table class="table table-bordered">
+        <thead><tr><th>商品ID</th></thead>
+            <td><%= form.number_field :iteminfo_id, min:0 %></td></tr>
+        <thead><tr><th>作成個数</th></thead>
+            <td><%= form.number_field :createcount, min:0 %></td></tr>
+            <td><%= form.submit "送信"%></td></tr>
+    </table>
+    <% end %>
+</div>
 <hr>
 
-<h4>商品IDと商品名の組み合わせです</h4>
-<table>
-    <tr><th>商品ID</th><th>商品名</th></tr>
-    <% @iteminfos.each do |info| %>
-    <tr>
-        <td><%= info.id %></td>
-        <td><%= info.name %></td>
-    </tr>
-    <% end %>
-</table>
+<div class="iteminfo">商品情報</div>
+<div class="info-table">
+    <div class="inline-block">
+        <% if @iteminfo_1 != nil %>
+        <table class="table-bordered">
+            <tr>
+                <th class="id">商品ID<th>
+                <% @iteminfo_1.each do |obj| %>
+                    <th><%= obj.id %></th>
+                <% end %>
+            </tr>
+            <tr>
+                <td class="name">商品名<td>
+                <% @iteminfo_1.each do |obj| %>
+                    <td><%= obj.name %></td>
+                    <% end %>
+            </tr>
+        </table>
+        <% end %>
+    <div>
+
+    <div class="inline-block">
+        <% if @iteminfo_2 != nil %>
+        <table class="table-bordered">
+            <tr>
+                <th class="id">商品ID<th>
+                <% @iteminfo_2.each do |obj| %>
+                    <th><%= obj.id %></th>
+                <% end %>
+            </tr>
+            <tr>
+                <td class="name">商品名<td>
+                <% @iteminfo_2.each do |obj| %>
+                    <td><%= obj.name %></td>
+                    <% end %>
+            </tr>
+        </table>
+        <% end %>
+    <div>
+
+    <div class="inline-block">
+        <% if @iteminfo_3 != nil %>
+        <table class="table-bordered">
+            <tr>
+                <th class="id">商品ID<th>
+                <% @iteminfo_3.each do |obj| %>
+                    <th><%= obj.id %></th>
+                <% end %>
+            </tr>
+            <tr>
+                <td class="name">商品名<td>
+                <% @iteminfo_3.each do |obj| %>
+                    <td><%= obj.name %></td>
+                    <% end %>
+            </tr>
+        </table>
+        <% end %>
+    <div>
+
+    <div class="inline-block">
+        <% if @iteminfo_4 != nil %>
+        <table class="table-bordered">
+            <tr>
+                <th class="id">商品ID<th>
+                <% @iteminfo_4.each do |obj| %>
+                    <th><%= obj.id %></th>
+                <% end %>
+            </tr>
+            <tr>
+                <td class="name">商品名<td>
+                <% @iteminfo_4.each do |obj| %>
+                    <td><%= obj.name %></td>
+                    <% end %>
+            </tr>
+        </table>
+        <% end %>
+    <div>
+    
+<div>   
+

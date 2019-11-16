@@ -1,24 +1,33 @@
-<h1>商品情報</h1>
-<p><%= @msg %></p>
+<div class="body-title">商品情報一覧</div>
+<hr>
 
-<ul id = "nav">
-<% @genres.each do |genre|%>
-    <li><a href="/iteminfos/genre/<%= genre.id %>"><%= genre.name %></a></li>
-<% end %>
-</ul>
+<div class="genres">ジャンルごとの商品情報</div>
+<div class="genre-nav">
+    <div class="col-12 clearfix">
+        <div class="float-left">
+        <% @genres.each do |genre|%>
+            <div class="inline-blocks"><a href="/iteminfos/genre/<%= genre.id %>"><%= genre.name %></a></div>
+        <% end %>
+        </div>
+    </div>
+</div>
 
-<table>
+<hr>
+
+<table class="table table-bordered">
+    <thead>
     <tr><th>商品ID</th><th>商品名</th><th>商品画像</th><th>販売可能時間</th><th>ジャンル名</th><th colspan="2"></th></tr>
+    </thead>
     <% @iteminfos.each do |obj| %>
     <tr>
         <td><%= obj.id %></td>
         <td><%= obj.name %></td>
-        <td>画像なし（仮）</td>
+        <td><%= obj.path %></td>
         <td><%= obj.itemtime %>時間</td>
         <td><%= obj.genre.name %></td>
         <td><a href="/iteminfos/edit/<%= obj.id %>">更新</a></td>
-        <td><a href="javascript:delData(<%= obj.id %>);">削除</a></td>
     </tr>
+    <%= obj.path %>
     <% end %>
 </table>
 

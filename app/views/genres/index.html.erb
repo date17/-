@@ -1,20 +1,21 @@
-<h1>Genres#index</h1>
-<p><%= @msg %></p>
+<div class="body-title">ジャンル情報一覧</div>
+<hr>
 
-<table>
-    <tr><th>ジャンルID</th><th>ジャンル名</th><th colspan="2"></th></tr>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr><th>ジャンルID</th><th>ジャンル名</th><th></th></tr>
+    </thead>
     <% @genres.each do |obj|%>
     <tr>
         <td><%= obj.id %></td>
         <td><%= obj.name %></td>
         <td><a href="/genres/edit/<%= obj.id %>">更新</a></td>
-        <td><a href="javascript:delData(<%= obj.id %>);">削除</a></td>
     </tr>
     <% end %>
-    
 </table>
 
 <p><a href="/genres/add">＞＞新規作成</a></p>
+
 
 <script>
 function delData(num){

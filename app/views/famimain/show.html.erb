@@ -1,15 +1,22 @@
-<h1><%= @nameの販売一覧 %></h1>
+<div class="body-title"><%= @iteminfo.name %>の商品一覧</div>
 
-<ul id = "nav">
-<% @genres.each do |genre|%>
-    <li><a href="/famimain/genre/<%= genre.id %>"><%= genre.name %></a></li>
-<% end %>
-</ul>
+<div class="genres">ジャンルごとに表示</div>
+<div class="genre-nav">
+    <div class="col-12 clearfix">
+        <div class="float-left">
+        <% @genres.each do |genre|%>
+            <div class="inline-blocks"><a href="/famimain/genre/<%= genre.id %>"><%= genre.name %></a></div>
+        <% end %>
+        </div>
+    </div>
+</div>
 
 <hr>
 <h3>要廃棄登録データ</h3>
-<table>
-    <tr><th>作成ID</th><th>商品名</th><th>販売個数</th><th>販売可能時間</th>th>ジャンル名</th><th>商品状態</th><th></th></tr>
+<table class="table table-bordered">
+    <thead>
+    <tr><th>作成ID</th><th>商品名</th><th>販売個数</th><th>販売可能時間</th><th>ジャンル名</th><th>商品状態</th><th></th></tr>
+    </thead>
     <% @data.each do |obj| %>
         <% if Famimain.new.timecalnos(obj.iteminfo.itemtime, obj.created_at) < 0 && Discard.find_by(itemcreate_id: obj.id) == nil %>
         <tr>
@@ -18,6 +25,7 @@
             <td><%= obj.buycount %></td>
             <td><%= Famimain.new.timecal(obj.iteminfo.itemtime, obj.created_at) %></td>
             <td><%= obj.iteminfo.genre.name %></td>
+            <td>即廃棄</td>
             <td><a href="/discards/add/<%= obj.id %>">廃棄登録</a></td>
         </tr>
         <% end %>
@@ -26,16 +34,19 @@
 
 <hr>
 <h3>販売可能商品データ</h3>
-<table>
+<table class="table table-bordered">
+    <thead>
     <tr><th>作成ID</th><th>商品名</th><th>販売個数</th><th>販売可能時間</th><th>ジャンル名</th><th>商品状態</th><th></th></tr>
+    </thead>
     <% @data.each do |obj| %>
-        <% if Famimain.new.timecalnos(obj.iteminfo.itemtime, obj.created_at) >= 0 == Discard.find_by(itemcreate_id: obj.id) == nil %>
+        <% if Famimain.new.timecalnos(obj.iteminfo.itemtime, obj.created_at) >= 0 && Discard.find_by(itemcreate_id: obj.id) == nil %>
         <tr>
             <td><%= obj.id %></td>
             <td><%= obj.iteminfo.name %></td>
             <td><%= obj.buycount %></td>
             <td><%= Famimain.new.timecal(obj.iteminfo.itemtime, obj.created_at) %></td>
             <td><%= obj.iteminfo.genre.name %></td>
+            <td>販売可能</td>
             <td><a href="/discards/add/<%= obj.id %>">廃棄登録</a></td>
         </tr>
         <% end %>

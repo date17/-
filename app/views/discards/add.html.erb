@@ -1,5 +1,5 @@
-<h1>Discards#add</h1>
-<p><%= @msg %></p>
+<div class="body-title">廃棄登録フォーム</div>
+<hr>
 
 <% if @discard.errors.any? %>
 <ul>
@@ -7,24 +7,29 @@
         <li><%= err %></li>
     <% end %>
 </ul>
-<% end %>
-<%= @itemcreate.id %>
-<%= form_for(@discard, url:{controller:'discards', action:'add'}) do |form| %>
-<table>
-    <tr><th>作成ID</th><td><%= @itemcreate.id %><%= form.hidden_field :itemcreate_id , value:@itemcreate.id %></td></tr>
-    <tr><th>商品名</th><td><%= @itemcreate.iteminfo.name %></td></tr>
-    <tr><th>個数</th>
-        <td><%= form.number_field :discardcount, value:@itemcreate.buycount %></td></tr>
-    <tr><th>メモ</th>
-        <td><%= form.text_area :memo, {cols:40, rows:10} %></td></tr>
-    <tr><th></th>
-        <td><%= form.submit "送信" %></td></tr>
-</table>
+<hr>
 <% end %>
 
+<div class="add-form">
+    <%= form_for(@discard, url:{controller:'discards', action:'add'}) do |form| %>
+    <table class="table table-bordered">
+        <thead class="thead-dark"><tr><th>作成ID</th></thead>
+            <td><%= @itemcreate.id %><%= form.hidden_field :itemcreate_id , value:@itemcreate.id %></td></tr>
+        <thead class="thead-dark"><tr><th>商品名</th></thead>
+            <td><%= @itemcreate.iteminfo.name %></td></tr>
+        <thead class="thead-dark"><tr><th>個数</th></thead>
+            <td><%= form.number_field :discardcount, value:@itemcreate.buycount, min:0 %></td></tr>
+        <thead class="thead-dark"><tr><th>メモ</th></thead>
+            <td><%= form.text_area :memo, {cols:40, rows:10} %></td></tr>
+            <td><%= form.submit "追加" %></td></tr>
+    </table>
+    <% end %>
+</div>
+
 <hr>
-<table>
-<tr><th>作成ID</th><th>商品名</th><th>作成時間</th><th>残り販売可能時間</th><th>販売個数</th><th>廃棄時間</th></tr>
+<div class="createinfo">廃棄追加予定の商品データ</div>
+<table class="table table-bordered">
+<thead><tr><th>作成ID</th><th>商品名</th><th>作成時間</th><th>残り販売可能時間</th><th>販売個数</th><th>廃棄時間</th></tr></thead>
 <tr>
     <td><%= @itemcreate.id %></td>
     <td><%= @itemcreate.iteminfo.name %></td>

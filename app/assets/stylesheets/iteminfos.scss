@@ -1,3 +1,63 @@
 // Place all the styles related to the iteminfos controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+    .body-title {
+        font-size: 25pt;
+        font-weight: bold;
+        color: #333;
+    }
+    .genres {
+        font-size: 15pt;
+        font-weight: bold;
+        margin: 10px;
+    }
+    .genre-nav {
+        .inline-blocks {
+            display: inline;
+            background-color: #333;
+            padding: 10px;
+            margin: 1px;
+            a {
+                color: #ffffff;
+                font-weight: bold;
+            }
+        }
+    }
+    thead {
+        background-color: #84ff84;
+        color: #ffffff;
+        text-align: center;
+    }
+    td {
+        text-align: center;
+    }
+    .main {
+        .inline-block {
+            display: inline-block;
+            margin-left: 80px;
+            margin-right: 80px;
+            padding: 30px;
+            .add-form {
+                table {
+                    thead {
+                        background-color: #84ff84;
+                        color: #ffffff;
+                        text-align: center;
+                    }
+                    tr {
+                        text-align: center;
+                    }
+                }
+            }
+            .genre-table {
+                thead {
+                    background-color: #84ff84;
+                    color: #ffffff;
+                    text-align: center;
+                }
+                tr {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

@@ -1,8 +1,8 @@
-<h1>Discards#index</h1>
-<p><%= @msg %></p>
+<div class="body-title">廃棄商品一覧</div>
+<hr>
 
-<table>
-    <tr><th>廃棄ID</th><th>商品名</th><th>個数</th><th> 廃棄登録時間</th><th>メモ</th><th></th></tr>
+<table class="table table-bordered">
+    <thead class="thead-dark"><tr><th>廃棄ID</th><th>商品名</th><th>個数</th><th> 廃棄登録時間</th><th>メモ</th><th></th></tr></thead>
     <% @discards.each do |obj| %>
         <tr>
             <td><%= obj.id %></td>

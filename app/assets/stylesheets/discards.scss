@@ -1,3 +1,26 @@
-// Place all the styles related to the Discards controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+    .body-title {
+        font-size: 20pt;
+        font-weight: bold;
+        color: #333;
+    }
+    .add-form {
+        margin-left: auto;
+        margin-right: auto;
+        width: 35%;
+    }
+    table {
+        text-align: center;
+        thead {
+            background-color: #83ff83;
+            color: #ffffff;
+            text-align: center;
+        }
+    }
+    .createinfo {
+        font-size: 15pt;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+    }
+}

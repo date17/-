@@ -1,6 +1,5 @@
 class FamimainController < ApplicationController
-  layout 'famima'
-
+layout 'famimain'
   # 全データ表示
   def index
     page_size = 10
@@ -23,6 +22,7 @@ class FamimainController < ApplicationController
     end
     @genres = Genre.all
     @genre = params[:genre_id]
+    @genre_name = Genre.find(@genre).name
     @data = Itemcreate.joins(:iteminfo).where("genre_id = ?", @genre).offset(page_size * @page_num).limit(page_size) 
 
   end

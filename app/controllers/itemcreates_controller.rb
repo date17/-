@@ -1,6 +1,6 @@
 class ItemcreatesController < ApplicationController
+  layout 'itemcreate'
 # 前処理
-layout 'famima'
 before_action :set_action, only: [:edit, :delete, :update]
 
 # 全表示
@@ -15,6 +15,10 @@ before_action :set_action, only: [:edit, :delete, :update]
     @itemcreate = Itemcreate.new
     @msg = 'please input new data'
     @iteminfos = Iteminfo.all
+    @iteminfo_1 = @iteminfos.where(genre_id: 1)
+    @iteminfo_2 = @iteminfos.where(genre_id: 2)
+    @iteminfo_3 = @iteminfos.where(genre_id: 3)
+    @iteminfo_4 = @iteminfos.where(genre_id: 4)
     if request.post?
       # 最初は作成個数と販売個数を同じにす
       params[:itemcreate][:buycount] = params[:itemcreate][:createcount]
@@ -29,6 +33,10 @@ before_action :set_action, only: [:edit, :delete, :update]
   def edit
     @msg = 'please input update data'
     @iteminfos = Iteminfo.all
+    @iteminfo_1 = @iteminfos.where(genre_id: 1)
+    @iteminfo_2 = @iteminfos.where(genre_id: 2)
+    @iteminfo_3 = @iteminfos.where(genre_id: 3)
+    @iteminfo_4 = @iteminfos.where(genre_id: 4)
     if request.patch?
       @itemcreate.update(itemcreate_params)
       @msg = 'sucsess update data'

@@ -1,5 +1,5 @@
 class GenresController < ApplicationController
-  layout 'famima'
+layout 'genre'
   before_action :set_action, only: [:edit, :delete]
 
   # 全表示
