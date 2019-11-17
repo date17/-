@@ -2,40 +2,26 @@ class FamimainController < ApplicationController
 layout 'famimain'
   # 全データ表示
   def index
-    page_size = 10
-    @page_num = 0
-    if params[:page] != nil
-      @page_num = params[:page].to_i
-    end
     @genres = Genre.all
 
-    @data = Itemcreate.all.offset(page_size * @page_num).limit(page_size)
+    @data = Itemcreate.all
 
   end
 
   # ジャンル名検索
   def genre
-    page_size = 10
-    @page_num = 0
-    if params[:page] != nil
-      @page_num = params[:page].to_i
-    end
     @genres = Genre.all
     @genre = params[:genre_id]
     @genre_name = Genre.find(@genre).name
-    @data = Itemcreate.joins(:iteminfo).where("genre_id = ?", @genre).offset(page_size * @page_num).limit(page_size) 
+    @data = Itemcreate.joins(:iteminfo).where("genre_id = ?", @genre)
 
   end
 
   # 商品名検索
   def show
-    page_size = 5
-    @page_num = 0
-    if params[:page] != nil
-      @page_num = params[:page].to_i
-    end
+    #info_id = Iteminfo.find_by(name: params[:id]).id
     @genres = Genre.all
     @iteminfo = Iteminfo.find(params[:id])
-    @data = Itemcreate.where(iteminfo_id: @iteminfo.id).offset(page_size * @page_num).limit(page_size)
+    @data = Itemcreate.where(iteminfo_id: @iteminfo.id)
   end
 end
